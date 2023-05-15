@@ -1,15 +1,52 @@
 import chroma from 'chroma-js';
 
+export const getRandomColor = () => {
+	var color = chroma.random().hex();
+	return color;
+};
+
+export function generateOppositeColor(baseColor) {
+	// Create a Chroma.js color object from the base color
+	var color = chroma(baseColor);
+
+	// Get the hue value of the base color
+	var hue = color.get('hsl.h');
+
+	// Get the brightness and saturation values of the base color
+	var brightness = color.get('hsl.l'); // Scale from 0-1 to 0-100
+	var saturation = color.get('hsl.s'); // Scale from 0-1 to 0-100
+
+	// Calculate the opposite brightness and saturation values
+	var newBrightness = brightness < 0.5 ? 0.8 : 0.3;
+	var oppositeSaturation = 100 - saturation;
+
+	// Create the opposite color by setting the calculated values
+	var oppositeColor = color.set('hsl.l', newBrightness).set('hsl.s', saturation);
+
+	// Set the hue value from the base color
+	var finalColor = oppositeColor.set('hsl.h', hue);
+
+	// Convert the color object to hexadecimal string
+	var finalColorHex = finalColor.hex();
+
+	return finalColorHex;
+}
+
 export const generateAnalogousColors = color => {
 	const baseColor = chroma(color);
 	const scheme = [];
-	scheme.push(color);
+
+	const mainBrightness = baseColor.get('hsl.l');
 
 	for (let i = 1; i <= 4; i++) {
-		const analogousColor = baseColor.set(
-			'hsl.h',
-			(baseColor.get('hsl.h') + i * 30) % 360
-		);
+		const brightnessFactor = mainBrightness > 0.5 ? 1 - i * 0.1 : 1 + i * 0.1;
+		const saturationFactor = mainBrightness > 0.5 ? 1 - i * 0.05 : 1 + i * 0.05;
+
+		const analogousColor = baseColor
+			.set('hsl.h', (baseColor.get('hsl.h') + 45 * i) % 360)
+			.set('hsl.s', baseColor.get('hsl.s') * saturationFactor)
+			.set('hsl.l', baseColor.get('hsl.l') * brightnessFactor);
+
 		scheme.push(analogousColor.hex());
 	}
 
@@ -18,10 +55,10 @@ export const generateAnalogousColors = color => {
 
 export const generateMonochromaticColors = color => {
 	const baseColor = chroma(color);
-	const scheme = [color];
+	const scheme = [];
 
 	for (let i = 1; i <= 4; i++) {
-		const monochromaticColor = baseColor.darken(i / 5).hex();
+		const monochromaticColor = baseColor.darken(i / 2).hex();
 		scheme.push(monochromaticColor);
 	}
 
@@ -30,7 +67,7 @@ export const generateMonochromaticColors = color => {
 
 export const generateTriadicColors = color => {
 	const baseColor = chroma(color);
-	const scheme = [color];
+	const scheme = [];
 
 	for (let i = 1; i <= 4; i++) {
 		const triadicColor = baseColor.set(
@@ -49,7 +86,7 @@ export const generateComplementaryColors = color => {
 		'hsl.h',
 		(baseColor.get('hsl.h') + 180) % 360
 	);
-	const scheme = [color, complementaryColor.hex()];
+	const scheme = [complementaryColor.hex()];
 
 	for (let i = 1; i <= 3; i++) {
 		const interpolatedColor = chroma.mix(
@@ -79,7 +116,6 @@ export const generateSplitComplementaryColors = color => {
 		(baseColor.get('hsl.h') + 210) % 360
 	);
 	const scheme = [
-		color,
 		splitComplementary1.hex(),
 		splitComplementary2.hex(),
 		complementaryColor.hex(),
@@ -106,7 +142,7 @@ export const generateSplitComplementaryColors = color => {
 
 export const generateDoubleSplitComplementaryColors = color => {
 	const baseColor = chroma(color);
-	const scheme = [color];
+	const scheme = [];
 
 	const complementary1 = baseColor.set('hsl.h', (baseColor.get('hsl.h') + 180) % 360);
 	const complementary2 = baseColor.set('hsl.h', (baseColor.get('hsl.h') + 180) % 360);
@@ -135,7 +171,7 @@ export const generateDoubleSplitComplementaryColors = color => {
 
 export const generateSquareColors = color => {
 	const baseColor = chroma(color);
-	const scheme = [color];
+	const scheme = [];
 
 	for (let i = 1; i <= 4; i++) {
 		const squareColor = baseColor.set(
@@ -154,23 +190,19 @@ export const generateCompoundColors = color => {
 	const compound2 = baseColor.set('hsl.h', (baseColor.get('hsl.h') + 180) % 360);
 	const compound3 = baseColor.set('hsl.h', (baseColor.get('hsl.h') + 210) % 360);
 	const compound4 = baseColor.set('hsl.h', (baseColor.get('hsl.h') + 330) % 360);
-	const scheme = [
-		color,
-		compound1.hex(),
-		compound2.hex(),
-		compound3.hex(),
-		compound4.hex(),
-	];
+	const scheme = [compound1.hex(), compound2.hex(), compound3.hex(), compound4.hex()];
 
 	return scheme;
 };
 
 export const generateShadesColors = color => {
 	const baseColor = chroma(color);
-	const scheme = [color];
+	const scheme = [];
+
+	const saturation = baseColor.get('hsl.s');
 
 	for (let i = 1; i <= 4; i++) {
-		const shadeColor = baseColor.darken(i / 0.5).hex();
+		const shadeColor = baseColor.set('hsl.s', i / 10 + saturation).hex();
 		scheme.push(shadeColor);
 	}
 
