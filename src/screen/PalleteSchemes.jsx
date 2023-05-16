@@ -14,6 +14,7 @@ import {
 } from '../utils/collorShemes';
 import Pallete from '../components/Pallete';
 import { TiArrowShuffle } from 'react-icons/ti';
+import Navbar from '../components/Navbar';
 
 const Tools = ({ mainColor, setMainColor }) => {
 	return (
@@ -95,48 +96,59 @@ const PalleteSchemes = () => {
 	}, [mainColor]);
 
 	return (
-		<div className='relative flex items-center flex-col w-full max-w-[1440px] px-4 sm:px-8 md:px-16 py-16'>
-			<div className='font-black text-3xl md:text-5xl max-w-[500px] text-center mt-5 mb-4'>
-				Find Cool Palletes
-				<div>
-					For Any <span className='text-blue-700 italic'>Color</span>
+		<>
+			<Navbar />
+			<div className='relative flex items-center flex-col w-full max-w-[1440px] px-4 sm:px-8 md:px-16 py-16'>
+				<div className='font-black text-3xl md:text-5xl max-w-[500px] text-center mt-5 mb-4'>
+					Find Cool Palletes
+					<div>
+						For Any <span className='text-blue-700 italic'>Color</span>
+					</div>
+				</div>
+				<div className='mb-20 font-medium opacity-50'>
+					Click The Color To Copy The Hex Value
+				</div>
+				<Tools mainColor={mainColor} setMainColor={setMainColor} />
+				<div className='w-full flex flex-col gap-4 md:gap-8'>
+					<Pallete
+						colors={[mainColor, ...analogousColors]}
+						title={'analogous Colors'}
+					/>
+					<Pallete
+						colors={[mainColor, ...monochromaticColors]}
+						title={'monochromatic Colors'}
+					/>
+					<Pallete
+						colors={[mainColor, ...triadicColors]}
+						title={'triadic Colors'}
+					/>
+					<Pallete
+						colors={[mainColor, ...complementaryColors]}
+						title={'complementary Colors'}
+					/>
+					<Pallete
+						colors={[mainColor, ...splitComplementaryColors]}
+						title={'split Complementary Colors'}
+					/>
+					<Pallete
+						colors={[mainColor, ...doubleSplitComplementaryColors]}
+						title={'double Split Complementary Colors'}
+					/>
+					<Pallete
+						colors={[mainColor, ...squareColors]}
+						title={'square Colors'}
+					/>
+					<Pallete
+						colors={[mainColor, ...compoundColors]}
+						title={'compound Colors'}
+					/>
+					<Pallete
+						colors={[mainColor, ...shadesColors]}
+						title={'shades Colors'}
+					/>
 				</div>
 			</div>
-      <div className='mb-20 font-medium opacity-50'>Click The Color To Copy The Hex Value</div>
-			<Tools mainColor={mainColor} setMainColor={setMainColor} />
-			<div className='w-full flex flex-col gap-4 md:gap-8'>
-				<Pallete
-					colors={[mainColor, ...analogousColors]}
-					title={'analogous Colors'}
-				/>
-				<Pallete
-					colors={[mainColor, ...monochromaticColors]}
-					title={'monochromatic Colors'}
-				/>
-				<Pallete
-					colors={[mainColor, ...triadicColors]}
-					title={'triadic Colors'}
-				/>
-				<Pallete
-					colors={[mainColor, ...complementaryColors]}
-					title={'complementary Colors'}
-				/>
-				<Pallete
-					colors={[mainColor, ...splitComplementaryColors]}
-					title={'split Complementary Colors'}
-				/>
-				<Pallete
-					colors={[mainColor, ...doubleSplitComplementaryColors]}
-					title={'double Split Complementary Colors'}
-				/>
-				<Pallete colors={[mainColor, ...squareColors]} title={'square Colors'} />
-				<Pallete
-					colors={[mainColor, ...compoundColors]}
-					title={'compound Colors'}
-				/>
-				<Pallete colors={[mainColor, ...shadesColors]} title={'shades Colors'} />
-			</div>
-		</div>
+		</>
 	);
 };
 
