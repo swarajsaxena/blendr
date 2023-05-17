@@ -28,13 +28,10 @@ const Footer = ({ textColor, primaryButtonColor }) => {
 							: 'black',
 					}}
 					href='https://www.buymeacoffee.com/swarajs'
-					className='w-max px-2 md:px-4 py-2 rounded-md font-medium bg-yellow-400 flex items-center'
+					className='w-max px-4 py-2 rounded-md font-medium bg-yellow-400 flex items-center'
 					target='_blank'
 				>
-					<span className='hidden md:block'>Buy Me A Coffee</span>
-					<div className='md:hidden flex items-center justify-center h-8 w-8'>
-						<TbPigMoney className='text-lg' />
-					</div>
+					<span className=''>Buy Me A Coffee</span>
 				</a>
 			</div>
 			<div className='flex flex-col items-start md:items-end h-full'>
