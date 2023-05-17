@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import { TiArrowShuffle } from 'react-icons/ti';
 import chroma from 'chroma-js';
 import { schemes } from '../scheme';
+import { Link } from 'react-router-dom';
 
 const generateRandomScheme = () => {
 	const index = (Math.random() * schemes.length).toFixed(0);
@@ -255,7 +256,8 @@ const Home = () => {
 						>
 							Randomise
 						</button>
-						<button
+						<Link
+							to={'/generate-pallete'}
 							className='px-4 py-3 md:px-8 md:py-4 rounded-lg font-medium hover:shadow-lg hover:-translate-y-1 transition-all'
 							style={{
 								background: secondaryButtonColor,
@@ -266,7 +268,7 @@ const Home = () => {
 							}}
 						>
 							Generate Pallete
-						</button>
+						</Link>
 					</div>
 					<div className='flex items-center flex-col'>
 						<div className='text-xs'>Pallete In Use</div>
