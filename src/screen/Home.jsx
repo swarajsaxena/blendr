@@ -31,6 +31,8 @@ const Tools = ({
 		setTextColor(text);
 		setName(name);
 		setAccentColor(accent);
+		document.body.style.background = backgroundColor;
+		document.body.style.color = textColor;
 	};
 	return (
 		<div className='fixed bottom-8 p-2 max-w-[90vw] flex-wrap rounded-lg bg-gray-200/50 backdrop-blur-lg flex items-center justify-center gap-2'>
@@ -231,6 +233,9 @@ const Home = () => {
 								setSecondaryBtnColor(secondaryCTA);
 								setTextColor(text);
 								setAccentColor(accent);
+
+								document.body.style.background = backgroundColor;
+								document.body.style.color = textColor;
 							}}
 							className='px-4 py-3 md:px-8 md:py-4 rounded-lg font-medium hover:shadow-lg hover:-translate-y-1 transition-all'
 							style={{
