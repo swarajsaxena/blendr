@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavbarPrimary } from '../components/Navbar';
+import Footer from '../components/Footer';
 import { TiArrowShuffle } from 'react-icons/ti';
 import chroma from 'chroma-js';
 import { schemes } from '../scheme';
@@ -41,7 +42,7 @@ const Tools = ({
 					background: backgroundColor,
 					color: chroma(backgroundColor).get('hsl.l') < 0.5 ? 'white' : 'black',
 				}}
-				className={`swatch border border-gray-700/20 relative rounded-md`}
+				className={`swatch flex-1 border border-gray-700/20 relative rounded-md`}
 			>
 				<input
 					type='color'
@@ -56,7 +57,7 @@ const Tools = ({
 				/>
 				<label
 					htmlFor='main-color'
-					className='flex justify-center items-center h-max md:h-16 w-max p-2 px-4 md:p-4 md:px-8 cursor-pointer'
+					className='flex justify-center items-center text-center w-full h-max md:h-16 p-2 px-4 md:p-4 md:px-8 cursor-pointer'
 				>
 					<span className='hidden md:block'>Background</span>
 					<span className='block md:hidden'>BG</span>
@@ -67,7 +68,7 @@ const Tools = ({
 					background: textColor,
 					color: chroma(textColor).get('hsl.l') < 0.5 ? 'white' : 'black',
 				}}
-				className={`swatch border border-gray-700/20 relative rounded-md`}
+				className={`swatch flex-1 border border-gray-700/20 relative rounded-md`}
 			>
 				<input
 					type='color'
@@ -82,7 +83,7 @@ const Tools = ({
 				/>
 				<label
 					htmlFor='text-color'
-					className='flex justify-center items-center h-max md:h-16 w-max p-2 px-4 md:p-4 md:px-8 cursor-pointer'
+					className='flex justify-center items-center text-center w-full h-max md:h-16 p-2 px-4 md:p-4 md:px-8 cursor-pointer'
 				>
 					Text
 				</label>
@@ -93,7 +94,7 @@ const Tools = ({
 					color:
 						chroma(primaryButtonColor).get('hsl.l') < 0.5 ? 'white' : 'black',
 				}}
-				className={`swatch border border-gray-700/20 relative rounded-md`}
+				className={`swatch flex-1 border border-gray-700/20 relative rounded-md`}
 			>
 				<input
 					type='color'
@@ -105,7 +106,7 @@ const Tools = ({
 				/>
 				<label
 					htmlFor='primary-color'
-					className='flex justify-center items-center h-max md:h-16 w-max p-2 px-4 md:p-4 md:px-8 cursor-pointer gap-1'
+					className='flex justify-center items-center text-center w-full h-max md:h-16 p-2 px-4 md:p-4 md:px-8 cursor-pointer gap-1'
 				>
 					<span className='hidden md:block'>Primary</span>
 					<span className='block md:hidden'>1</span>
@@ -120,7 +121,7 @@ const Tools = ({
 							? 'white'
 							: 'black',
 				}}
-				className={`swatch border border-gray-700/20 relative rounded-md`}
+				className={`swatch flex-1 border border-gray-700/20 relative rounded-md`}
 			>
 				<input
 					type='color'
@@ -132,7 +133,7 @@ const Tools = ({
 				/>
 				<label
 					htmlFor='secondary-color'
-					className='flex justify-center items-center h-max md:h-16 w-max p-2 px-4 md:p-4 md:px-8 cursor-pointer gap-1'
+					className='flex justify-center items-center text-center w-full h-max md:h-16 p-2 px-4 md:p-4 md:px-8 cursor-pointer gap-1'
 				>
 					<span className='hidden md:block'>Secondary</span>
 					<span className='block md:hidden'>2</span>
@@ -144,7 +145,7 @@ const Tools = ({
 					background: accentColor,
 					color: chroma(accentColor).get('hsl.l') < 0.5 ? 'white' : 'black',
 				}}
-				className={`swatch border border-gray-700/20 relative rounded-md`}
+				className={`swatch flex-1 border border-gray-700/20 relative rounded-md`}
 			>
 				<input
 					type='color'
@@ -156,14 +157,14 @@ const Tools = ({
 				/>
 				<label
 					htmlFor='accent-color'
-					className='flex justify-center items-center h-max md:h-16 w-max p-2 px-4 md:p-4 md:px-8 cursor-pointer'
+					className='flex justify-center items-center text-center w-full h-max md:h-16 p-2 px-4 md:p-4 md:px-8 cursor-pointer'
 				>
 					Accent
 				</label>
 			</button>
 			<button
 				onClick={randomise}
-				className='border rounded-md border-gray-700/20 flex justify-center aspect-square items-center h-11 md:h-16 bg-white hover:bg-gray-100 fl'
+				className='border flex-1 rounded-md border-gray-700/20 flex justify-center aspect-square items-center h-11 md:h-16 bg-white hover:bg-gray-100 fl'
 			>
 				<TiArrowShuffle className='text-xl text-black' />
 			</button>
@@ -201,7 +202,7 @@ const Home = () => {
 				primaryButtonColor={primaryButtonColor}
 			/>
 			<div className='relative flex items-center flex-col gap-10 w-full max-w-[1440px] px-4 sm:px-8 md:px-16 py-16'>
-				<div className='flex items-center justify-center flex-col gap-10'>
+				<div className='flex items-center justify-center flex-col gap-5 md:gap-10'>
 					<div className='my-16 mb-0 capitalize font-black md:text-5xl text-3xl text-center flex items-center justify-center flex-col'>
 						Redefining the way we{' '}
 						<span className='text-center'>
@@ -268,7 +269,7 @@ const Home = () => {
 						</button>
 					</div>
 					<div className='flex items-center flex-col'>
-						<div className='text-xs'>Pallete</div>
+						<div className='text-xs'>Pallete In Use</div>
 						<div className='font-extrabold text-lg'>{name}</div>
 					</div>
 				</div>
@@ -366,6 +367,7 @@ const Home = () => {
 					setAccentColor={setAccentColor}
 				/>
 			</div>
+			<Footer textColor={textColor} primaryButtonColor={primaryButtonColor} />
 		</>
 	);
 };

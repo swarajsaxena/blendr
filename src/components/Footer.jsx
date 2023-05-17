@@ -1,10 +1,14 @@
+import chroma from 'chroma-js';
 import React from 'react';
 import { TbColorSwatch, TbPigMoney } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 
-const Footer = () => {
+const Footer = ({ textColor, primaryButtonColor }) => {
 	return (
-		<div className='footer grid gap-4 items-center flex-col w-full max-w-[1440px] px-4 sm:px-8 md:px-16 py-16'>
+		<div
+			style={{ color: textColor ? textColor : 'black' }}
+			className='footer grid gap-4 items-center flex-col w-full max-w-[1440px] px-4 sm:px-8 md:px-16 py-16'
+		>
 			<div className='flex flex-col gap-2 h-full justify-between'>
 				<TbColorSwatch className='text-6xl text-blue-600' />
 				<div className='font-bold text-2xl'>BlendR</div>
@@ -13,6 +17,16 @@ const Footer = () => {
 					Feedback. Revolutionize your workflow today!
 				</div>
 				<a
+					style={{
+						backgroundColor: primaryButtonColor
+							? primaryButtonColor
+							: 'yellow',
+						color: primaryButtonColor
+							? chroma(primaryButtonColor).get('hsl.l') < 0.5
+								? 'white'
+								: 'black'
+							: 'black',
+					}}
 					href='https://www.buymeacoffee.com/swarajs'
 					className='w-max px-2 md:px-4 py-2 rounded-md font-medium bg-yellow-400 flex items-center'
 					target='_blank'
