@@ -37,7 +37,7 @@ const Footer = ({ textColor, primaryButtonColor }) => {
 					</div>
 				</a>
 			</div>
-			<div className='flex flex-col items-end h-full'>
+			<div className='flex flex-col items-start md:items-end h-full'>
 				<div className='flex flex-col items-start gap-2'>
 					<div className='font-medium text-lg border-b-2 border-blue-600'>
 						Site Map
@@ -46,7 +46,7 @@ const Footer = ({ textColor, primaryButtonColor }) => {
 					<Link to='/generate-pallete'>Generate Pallete</Link>
 				</div>
 			</div>
-			<div className='flex flex-col items-end h-full'>
+			<div className='flex flex-col items-start md:items-end h-full'>
 				<div className='flex flex-col items-start gap-2'>
 					<div className='font-medium text-lg border-b-2 border-blue-600'>
 						Links
