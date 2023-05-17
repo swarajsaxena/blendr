@@ -5,3 +5,7 @@
 .swatch:hover .swatch-text {
   opacity: 1;
 }
+
+.footer{
+  grid-template-columns: 1fr 0.5fr 0.5fr;
+}

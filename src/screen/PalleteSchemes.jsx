@@ -15,6 +15,7 @@ import {
 import Pallete from '../components/Pallete';
 import { TiArrowShuffle } from 'react-icons/ti';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const Tools = ({ mainColor, setMainColor }) => {
 	return (
@@ -95,6 +96,11 @@ const PalleteSchemes = () => {
 		setShadesColors(generateShadesColors(mainColor));
 	}, [mainColor]);
 
+	useEffect(() => {
+		document.body.style.background = "white";
+		document.body.style.color = "black";
+	}, []);
+
 	return (
 		<>
 			<Navbar />
@@ -148,6 +154,7 @@ const PalleteSchemes = () => {
 					/>
 				</div>
 			</div>
+      <Footer />
 		</>
 	);
 };

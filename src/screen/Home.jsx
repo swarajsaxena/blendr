@@ -31,8 +31,8 @@ const Tools = ({
 		setTextColor(text);
 		setName(name);
 		setAccentColor(accent);
-		document.body.style.background = backgroundColor;
-		document.body.style.color = textColor;
+		document.body.style.background = background;
+		document.body.style.color = text;
 	};
 	return (
 		<div className='fixed bottom-8 p-2 max-w-[90vw] flex-wrap rounded-lg bg-gray-200/50 backdrop-blur-lg flex items-center justify-center gap-2'>
@@ -49,7 +49,10 @@ const Tools = ({
 					name='main-color'
 					className='cursor-pointer appearance-none bg-transparent h-16 rounded w-full absolute left-0 border-none -z-10 invisible'
 					value={backgroundColor}
-					onChange={e => setBackgroundColor(e.target.value)}
+					onChange={e => {
+						setBackgroundColor(e.target.value);
+						document.body.style.background = backgroundColor;
+					}}
 				/>
 				<label
 					htmlFor='main-color'
@@ -72,7 +75,10 @@ const Tools = ({
 					name='text-color'
 					className='cursor-pointer appearance-none bg-transparent h-16 rounded w-full absolute left-0 border-none -z-10 invisible'
 					value={textColor}
-					onChange={e => setTextColor(e.target.value)}
+					onChange={e => {
+						setTextColor(e.target.value);
+						document.body.style.color = textColor;
+					}}
 				/>
 				<label
 					htmlFor='text-color'
@@ -126,7 +132,7 @@ const Tools = ({
 				/>
 				<label
 					htmlFor='secondary-color'
-					className='flex justify-center items-center h-max md:h-16 w-max p-2 px-4 md:p-4 md:px-8 cursor-pointer'
+					className='flex justify-center items-center h-max md:h-16 w-max p-2 px-4 md:p-4 md:px-8 cursor-pointer gap-1'
 				>
 					<span className='hidden md:block'>Secondary</span>
 					<span className='block md:hidden'>2</span>
@@ -184,8 +190,8 @@ const Home = () => {
 		setTextColor(text);
 		setAccentColor(accent);
 
-		document.body.style.background = backgroundColor;
-		document.body.style.color = textColor;
+		document.body.style.background = background;
+		document.body.style.color = text;
 	}, []);
 
 	return (
@@ -202,7 +208,7 @@ const Home = () => {
 							choose{' '}
 							<span
 								style={{
-									color: primaryButtonColor,
+									color: accentColor,
 									borderColor: accentColor,
 								}}
 								className='border-b-4'
@@ -234,8 +240,8 @@ const Home = () => {
 								setTextColor(text);
 								setAccentColor(accent);
 
-								document.body.style.background = backgroundColor;
-								document.body.style.color = textColor;
+								document.body.style.background = background;
+								document.body.style.color = text;
 							}}
 							className='px-4 py-3 md:px-8 md:py-4 rounded-lg font-medium hover:shadow-lg hover:-translate-y-1 transition-all'
 							style={{

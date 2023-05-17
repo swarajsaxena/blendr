@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiHome } from 'react-icons/fi';
-import { TbColorFilter, TbPigMoney } from 'react-icons/tb';
+import { TbColorFilter, TbColorSwatch, TbPigMoney } from 'react-icons/tb';
 import chroma from 'chroma-js';
 
 const Navbar = () => {
 	return (
-		<div className='p-4 py-6 flex items-center w-full justify-between bg-white/50 backdrop-blur-lg z-50 sticky top-0 border-b-2 border-[#94A3B8]/5'>
-			<div className='flex items-center gap-4'>
+		<div className='p-8 py-4 flex items-center w-full justify-between bg-white/50 backdrop-blur-lg z-50 sticky top-0 border-b-2 border-[#94A3B8]/5'>
+			<div className='flex items-center gap-2'>
+        <TbColorSwatch className='text-2xl text-blue-600' />
 				<span className='font-bold text-2xl'>BlendR</span>
 			</div>
 			<div className='flex items-center gap-4'>
@@ -51,9 +52,10 @@ export const NavbarPrimary = ({ primaryButtonColor, backgroundColor }) => {
 	return (
 		<div
 			style={{ background: backgroundColor + '7f' }}
-			className='p-4 py-6 flex items-center w-full justify-between backdrop-blur-lg z-50 sticky top-0 border-b-2 border-[#94A3B8]/5'
+			className='p-8 py-4 flex items-center w-full justify-between backdrop-blur-lg z-50 sticky top-0 border-b-2 border-[#94A3B8]/5'
 		>
-			<div className='flex items-center gap-4'>
+			<div className='flex items-center gap-2'>
+        <TbColorSwatch className='text-2xl text-blue-600' />
 				<span className='font-bold text-2xl'>BlendR</span>
 			</div>
 			<div className='flex items-center gap-4'>
